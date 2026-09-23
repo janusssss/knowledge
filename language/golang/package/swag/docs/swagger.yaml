@@ -1,0 +1,37 @@
+basePath: /
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server Petstore server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /goodbye:
+    get:
+      consumes:
+      - application/json
+      operationId: Goodbye
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      tags:
+      - example
+  /hello:
+    get:
+      consumes:
+      - application/json
+      operationId: Hello
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      tags:
+      - example
+swagger: "2.0"

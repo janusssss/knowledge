@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package protoexample;
+
+option go_package = "./pd";
+
+message Test{
+  optional string label = 1;
+  repeated int64 reps = 2;
+}

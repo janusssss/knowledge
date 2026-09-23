@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/janus
+    username: janus
+    password: janus
+    driver-class-name: org.postgresql.Driver
+
+
+  # kafka
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+
+
+
+
+mybatis:
+  mapper-locations: classpath:org/example/mapper/xml/*.xml
+  type-aliases-package: com.example.model
+
+# 综调系统-测试
+dispatch:
+
+
+  to: 801
+  reTrans-url: http://10.128.91.38:20501/serviceAgent/rest/idcOrderReply/httpApi/pubInterface/API_EXAMINE_RETRANS
+  report-url: http://10.128.91.38:20501/serviceAgent/rest/idcOrderReply/httpApi/pubInterface/API_EXAMINE_REPORTING
+
+  problem-url: http://10.128.91.38:20501/serviceAgent/rest/idcOrderReply/httpApi/pubInterface/API_EDA_PROBLEM
+  debug-url: http://10.128.91.38:20501/serviceAgent/rest/idcOrderReply/httpApi/pubInterface/API_EDA_XMGL
+  adecallback-url: http://10.128.91.38:20501/serviceAgent/rest/idcOrderReply/httpApi/pubInterface/API_DATA_EVENT_CALLBACK

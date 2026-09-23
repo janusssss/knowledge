@@ -1,0 +1,26 @@
+// 请使用 protobuf 给出用户登录接口，登录成功时返回用户账号， 登录失败返回错误信息
+syntax = "proto3";
+
+option go_package = "./pd;pd";
+
+
+// 用户登录请求
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+// 用户登录响应
+message LoginResponse {
+  // 使用oneof关键字来表示响应中只会有一个字段被设置
+  oneof result {
+    string account = 1; // 登录成功时返回用户账号
+    string error_message = 2; // 登录失败时返回错误信息
+  }
+}
+
+// 登录服务定义
+service LoginService {
+  // RPC方法Login，接收LoginRequest并返回LoginResponse
+  rpc Login(LoginRequest) returns (LoginResponse);
+}

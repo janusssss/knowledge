@@ -1,0 +1,591 @@
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: ""
+unified-delay: true
+ipv6: true
+profile:
+  store-selected: true
+  store-fake-ip: true
+tun:
+  mtu: 1500
+  enable: true
+  device: Mihomo
+  stack: mixed
+  auto-route: true
+  auto-redirect: false
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+  route-exclude-address: []
+dns:
+  enable: true
+  ipv6: true
+  use-system-hosts: false
+  listen: 127.0.0.1:5335
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - stun.*.*.*
+    - stun.*.*
+    - time.windows.com
+    - time.nist.gov
+    - time.apple.com
+    - time.asia.apple.com
+    - "*.ntp.org.cn"
+    - "*.openwrt.pool.ntp.org"
+    - time1.cloud.tencent.com
+    - time.ustc.edu.cn
+    - pool.ntp.org
+    - ntp.ubuntu.com
+    - ntp.aliyun.com
+    - ntp1.aliyun.com
+    - ntp2.aliyun.com
+    - ntp3.aliyun.com
+    - ntp4.aliyun.com
+    - ntp5.aliyun.com
+    - ntp6.aliyun.com
+    - ntp7.aliyun.com
+    - time1.aliyun.com
+    - time2.aliyun.com
+    - time3.aliyun.com
+    - time4.aliyun.com
+    - time5.aliyun.com
+    - time6.aliyun.com
+    - time7.aliyun.com
+    - "*.time.edu.cn"
+    - time1.apple.com
+    - time2.apple.com
+    - time3.apple.com
+    - time4.apple.com
+    - time5.apple.com
+    - time6.apple.com
+    - time7.apple.com
+    - time1.google.com
+    - time2.google.com
+    - time3.google.com
+    - time4.google.com
+    - music.163.com
+    - "*.music.163.com"
+    - "*.126.net"
+    - musicapi.taihe.com
+    - music.taihe.com
+    - songsearch.kugou.com
+    - trackercdn.kugou.com
+    - "*.kuwo.cn"
+    - api-jooxtt.sanook.com
+    - api.joox.com
+    - joox.com
+    - y.qq.com
+    - "*.y.qq.com"
+    - streamoc.music.tc.qq.com
+    - mobileoc.music.tc.qq.com
+    - isure.stream.qqmusic.qq.com
+    - dl.stream.qqmusic.qq.com
+    - aqqmusic.tc.qq.com
+    - amobile.music.tc.qq.com
+    - "*.xiami.com"
+    - "*.music.migu.cn"
+    - music.migu.cn
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+    - localhost.ptlogin2.qq.com
+    - "*.*.*.srv.nintendo.net"
+    - "*.*.stun.playstation.net"
+    - xbox.*.*.microsoft.com
+    - "*.ipv6.microsoft.com"
+    - "*.*.xboxlive.com"
+    - speedtest.cros.wr.pvp.net
+  default-nameserver:
+    - system
+    - 180.76.76.76
+    - 182.254.118.118
+    - 8.8.8.8
+    - 180.184.2.2
+    - 2400:3200::1
+  nameserver:
+    - https://223.5.5.5/dns-query#skip-cert-verify=true
+    - https://doh.pub/dns-query#skip-cert-verify=true
+    - https://dns.alidns.com/dns-query#skip-cert-verify=true
+    - tls://223.5.5.5#skip-cert-verify=true
+    - tls://dot.pub#skip-cert-verify=true
+    - tls://dns.alidns.com#skip-cert-verify=true
+    - https://223.6.6.6/dns-query#skip-cert-verify=true&h3=true
+    - https://cloudflare-dns.com/dns-query#skip-cert-verify=true
+  nameserver-policy:
+    +.quandao.com:
+      - https://doh.dohcore.com:2096/dns-query/30f55c1d-b93c-40d3-a565-733441a538a9#skip-cert-verify=true
+      - https://doh.cloudflare-lab.com:2096/dns-query/30f55c1d-b93c-40d3-a565-733441a538a9#skip-cert-verify=true
+    +.jiandaoyun.com:
+      - https://doh.dohcore.com:2096/dns-query/30f55c1d-b93c-40d3-a565-733441a538a9#skip-cert-verify=true
+      - https://doh.cloudflare-lab.com:2096/dns-query/30f55c1d-b93c-40d3-a565-733441a538a9#skip-cert-verify=true
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+      - 127.0.0.1/32
+    domain:
+      - +.google.com
+      - +.facebook.com
+      - +.twitter.com
+      - +.youtube.com
+      - +.xn--ngstr-lra8j.com
+      - +.google.cn
+      - +.googleapis.cn
+      - +.googleapis.com
+      - +.gvt1.com
+proxies:
+  - name: 🇺🇸11美国西集群-全网优化(hy2)
+    type: hysteria2
+    server: 11us.quandao.com
+    port: 42029
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇺🇸12美国旧金山-全网优化(hy2)
+    type: hysteria2
+    server: 12us.quandao.com
+    port: 48285
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇸🇬15新加坡-全网优化(hy2)
+    type: hysteria2
+    server: 15sg.quandao.com
+    port: 46768
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇺🇸29美国旧金山-全网优化(hy2)
+    type: hysteria2
+    server: 29us.quandao.com
+    port: 40279
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇺🇸39美国华盛顿-全网优化(hy2)
+    type: hysteria2
+    server: 39us.quandao.com
+    port: 44733
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 44美国维加斯-全网优化(hy2)
+    type: hysteria2
+    server: 44us.quandao.com
+    port: 47079
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇨🇦26加拿大-全网优化(hy2)
+    type: hysteria2
+    server: 26ca.quandao.com
+    port: 40143
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇩🇪16德国-电信/联通(hy2)
+    type: hysteria2
+    server: 16de.quandao.com
+    port: 42795
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇬🇧17英国-全网优化(hy2)
+    type: hysteria2
+    server: 17uk.quandao.com
+    port: 45971
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇨🇦18加拿大-全网优化(hy2)
+    type: hysteria2
+    server: 18ca.quandao.com
+    port: 48325
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇦🇺19澳洲-移动优化(hy2)
+    type: hysteria2
+    server: 19sdy.quandao.com
+    port: 40018
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇫🇷23法国-全网优化(hy2)
+    type: hysteria2
+    server: 23fr.quandao.com
+    port: 49750
+    ports: 40000-50000
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    skip-cert-verify: true
+  - name: 🇯🇵7日本-联通/移动(AnyTLS)
+    type: anytls
+    server: 7jp.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇰🇷8韩国集群-全网优化(AnyTLS)
+    type: anytls
+    server: 8kr.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇰🇷25韩国-全网优化(AnyTLS)
+    type: anytls
+    server: 25kr.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇯🇵10日本-全网优化(AnyTLS)
+    type: anytls
+    server: 10jp.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇺🇸12美国旧金山-全网优化(AnyTLS)
+    type: anytls
+    server: 12us.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇺🇸29美国旧金山-全网优化(AnyTLS)
+    type: anytls
+    server: 29us.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇺🇸39美国华盛顿-全网优化(AnyTLS)
+    type: anytls
+    server: 39us.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 44美国维加斯-全网优化(AnyTLS)
+    type: anytls
+    server: 44us.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇦🇪13迪拜-电信/移动/南方联通(AnyTLS)
+    type: anytls
+    server: 13dxb.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇮🇳14印度-移动/南方联通(AnyTLS)
+    type: anytls
+    server: 14in.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇸🇬6新加坡-联通/移动(AnyTLS)
+    type: anytls
+    server: 6sg.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇩🇪16德国-电信/联通(AnyTLS)
+    type: anytls
+    server: 16de.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇨🇦26加拿大-全网优化(AnyTLS)
+    type: anytls
+    server: 26ca.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇺🇸11美国西集群-全网优化(AnyTLS)
+    type: anytls
+    server: 11us.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 🇭🇰2香港集群-全网优化(AnyTLS)
+    type: anytls
+    server: 2hk.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: 4台湾-联通优化(AnyTLS)
+    type: anytls
+    server: 4tw.quandao.com
+    port: 4430
+    client-fingerprint: random
+    password: 30f55c1d-b93c-40d3-a565-733441a538a9
+    udp: true
+    tfo: false
+    sni: dss0.bdstatic.com
+    skip-cert-verify: true
+  - name: "官网: go.dgivn.click"
+    type: vmess
+    server: 114.114.114.114
+    port: 2235
+    uuid: 30f55c1d-b93c-40d3-a565-733441a538a9
+    alterId: 0
+    cipher: auto
+    udp: true
+proxy-groups:
+  - name: 狗狗加速.com
+    type: select
+    proxies:
+      - ♻️自动选择
+      - 🔯故障转移
+      - AnyTLS
+      - 🔥ChatGPT
+      - hy2
+      - 🇺🇸11美国西集群-全网优化(hy2)
+      - 🇺🇸12美国旧金山-全网优化(hy2)
+      - 🇸🇬15新加坡-全网优化(hy2)
+      - 🇺🇸29美国旧金山-全网优化(hy2)
+      - 🇺🇸39美国华盛顿-全网优化(hy2)
+      - 44美国维加斯-全网优化(hy2)
+      - 🇨🇦26加拿大-全网优化(hy2)
+      - 🇩🇪16德国-电信/联通(hy2)
+      - 🇬🇧17英国-全网优化(hy2)
+      - 🇨🇦18加拿大-全网优化(hy2)
+      - 🇦🇺19澳洲-移动优化(hy2)
+      - 🇫🇷23法国-全网优化(hy2)
+      - 🇯🇵7日本-联通/移动(AnyTLS)
+      - 🇰🇷8韩国集群-全网优化(AnyTLS)
+      - 🇰🇷25韩国-全网优化(AnyTLS)
+      - 🇯🇵10日本-全网优化(AnyTLS)
+      - 🇺🇸12美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸29美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸39美国华盛顿-全网优化(AnyTLS)
+      - 44美国维加斯-全网优化(AnyTLS)
+      - 🇦🇪13迪拜-电信/移动/南方联通(AnyTLS)
+      - 🇮🇳14印度-移动/南方联通(AnyTLS)
+      - 🇸🇬6新加坡-联通/移动(AnyTLS)
+      - 🇩🇪16德国-电信/联通(AnyTLS)
+      - 🇨🇦26加拿大-全网优化(AnyTLS)
+      - 🇺🇸11美国西集群-全网优化(AnyTLS)
+      - 🇭🇰2香港集群-全网优化(AnyTLS)
+      - 4台湾-联通优化(AnyTLS)
+      - "官网: go.dgivn.click"
+  - name: ♻️自动选择
+    type: url-test
+    proxies:
+      - 🇺🇸11美国西集群-全网优化(hy2)
+      - 🇺🇸12美国旧金山-全网优化(hy2)
+      - 🇸🇬15新加坡-全网优化(hy2)
+      - 🇺🇸29美国旧金山-全网优化(hy2)
+      - 🇺🇸39美国华盛顿-全网优化(hy2)
+      - 44美国维加斯-全网优化(hy2)
+      - 🇨🇦26加拿大-全网优化(hy2)
+      - 🇩🇪16德国-电信/联通(hy2)
+      - 🇬🇧17英国-全网优化(hy2)
+      - 🇨🇦18加拿大-全网优化(hy2)
+      - 🇦🇺19澳洲-移动优化(hy2)
+      - 🇫🇷23法国-全网优化(hy2)
+      - 🇯🇵7日本-联通/移动(AnyTLS)
+      - 🇰🇷8韩国集群-全网优化(AnyTLS)
+      - 🇰🇷25韩国-全网优化(AnyTLS)
+      - 🇯🇵10日本-全网优化(AnyTLS)
+      - 🇺🇸12美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸29美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸39美国华盛顿-全网优化(AnyTLS)
+      - 44美国维加斯-全网优化(AnyTLS)
+      - 🇦🇪13迪拜-电信/移动/南方联通(AnyTLS)
+      - 🇮🇳14印度-移动/南方联通(AnyTLS)
+      - 🇸🇬6新加坡-联通/移动(AnyTLS)
+      - 🇩🇪16德国-电信/联通(AnyTLS)
+      - 🇨🇦26加拿大-全网优化(AnyTLS)
+      - 🇺🇸11美国西集群-全网优化(AnyTLS)
+      - 🇭🇰2香港集群-全网优化(AnyTLS)
+      - 4台湾-联通优化(AnyTLS)
+      - "官网: go.dgivn.click"
+    url: http://cp.cloudflare.com/generate_204
+    interval: 1800
+  - name: 🔯故障转移
+    type: fallback
+    proxies:
+      - 🇺🇸11美国西集群-全网优化(hy2)
+      - 🇺🇸12美国旧金山-全网优化(hy2)
+      - 🇸🇬15新加坡-全网优化(hy2)
+      - 🇺🇸29美国旧金山-全网优化(hy2)
+      - 🇺🇸39美国华盛顿-全网优化(hy2)
+      - 44美国维加斯-全网优化(hy2)
+      - 🇨🇦26加拿大-全网优化(hy2)
+      - 🇩🇪16德国-电信/联通(hy2)
+      - 🇬🇧17英国-全网优化(hy2)
+      - 🇨🇦18加拿大-全网优化(hy2)
+      - 🇦🇺19澳洲-移动优化(hy2)
+      - 🇫🇷23法国-全网优化(hy2)
+      - 🇯🇵7日本-联通/移动(AnyTLS)
+      - 🇰🇷8韩国集群-全网优化(AnyTLS)
+      - 🇰🇷25韩国-全网优化(AnyTLS)
+      - 🇯🇵10日本-全网优化(AnyTLS)
+      - 🇺🇸12美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸29美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸39美国华盛顿-全网优化(AnyTLS)
+      - 44美国维加斯-全网优化(AnyTLS)
+      - 🇦🇪13迪拜-电信/移动/南方联通(AnyTLS)
+      - 🇮🇳14印度-移动/南方联通(AnyTLS)
+      - 🇸🇬6新加坡-联通/移动(AnyTLS)
+      - 🇩🇪16德国-电信/联通(AnyTLS)
+      - 🇨🇦26加拿大-全网优化(AnyTLS)
+      - 🇺🇸11美国西集群-全网优化(AnyTLS)
+      - 🇭🇰2香港集群-全网优化(AnyTLS)
+      - 4台湾-联通优化(AnyTLS)
+      - "官网: go.dgivn.click"
+    url: http://cp.cloudflare.com/generate_204
+    interval: 1800
+  - name: hy2
+    type: select
+    proxies:
+      - 🇺🇸11美国西集群-全网优化(hy2)
+      - 🇺🇸12美国旧金山-全网优化(hy2)
+      - 🇸🇬15新加坡-全网优化(hy2)
+      - 🇺🇸29美国旧金山-全网优化(hy2)
+      - 🇺🇸39美国华盛顿-全网优化(hy2)
+      - 44美国维加斯-全网优化(hy2)
+      - 🇨🇦26加拿大-全网优化(hy2)
+      - 🇩🇪16德国-电信/联通(hy2)
+      - 🇬🇧17英国-全网优化(hy2)
+      - 🇨🇦18加拿大-全网优化(hy2)
+      - 🇦🇺19澳洲-移动优化(hy2)
+      - 🇫🇷23法国-全网优化(hy2)
+  - name: 🔥ChatGPT
+    type: select
+    proxies:
+      - 🇺🇸11美国西集群-全网优化(hy2)
+      - 🇺🇸12美国旧金山-全网优化(hy2)
+      - 🇸🇬15新加坡-全网优化(hy2)
+      - 🇺🇸29美国旧金山-全网优化(hy2)
+      - 🇺🇸39美国华盛顿-全网优化(hy2)
+      - 44美国维加斯-全网优化(hy2)
+      - 🇨🇦26加拿大-全网优化(hy2)
+      - 🇩🇪16德国-电信/联通(hy2)
+      - 🇬🇧17英国-全网优化(hy2)
+      - 🇨🇦18加拿大-全网优化(hy2)
+      - 🇦🇺19澳洲-移动优化(hy2)
+      - 🇫🇷23法国-全网优化(hy2)
+      - 🇯🇵7日本-联通/移动(AnyTLS)
+      - 🇰🇷8韩国集群-全网优化(AnyTLS)
+      - 🇰🇷25韩国-全网优化(AnyTLS)
+      - 🇯🇵10日本-全网优化(AnyTLS)
+      - 🇺🇸12美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸29美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸39美国华盛顿-全网优化(AnyTLS)
+      - 44美国维加斯-全网优化(AnyTLS)
+      - 🇦🇪13迪拜-电信/移动/南方联通(AnyTLS)
+      - 🇮🇳14印度-移动/南方联通(AnyTLS)
+      - 🇸🇬6新加坡-联通/移动(AnyTLS)
+      - 🇩🇪16德国-电信/联通(AnyTLS)
+      - 🇨🇦26加拿大-全网优化(AnyTLS)
+      - 🇺🇸11美国西集群-全网优化(AnyTLS)
+      - 4台湾-联通优化(AnyTLS)
+      - "官网: go.dgivn.click"
+  - name: AnyTLS
+    type: select
+    proxies:
+      - 🇯🇵7日本-联通/移动(AnyTLS)
+      - 🇰🇷8韩国集群-全网优化(AnyTLS)
+      - 🇰🇷25韩国-全网优化(AnyTLS)
+      - 🇯🇵10日本-全网优化(AnyTLS)
+      - 🇺🇸12美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸29美国旧金山-全网优化(AnyTLS)
+      - 🇺🇸39美国华盛顿-全网优化(AnyTLS)
+      - 44美国维加斯-全网优化(AnyTLS)
+      - 🇦🇪13迪拜-电信/移动/南方联通(AnyTLS)
+      - 🇮🇳14印度-移动/南方联通(AnyTLS)
+      - 🇸🇬6新加坡-联通/移动(AnyTLS)
+      - 🇩🇪16德国-电信/联通(AnyTLS)
+      - 🇨🇦26加拿大-全网优化(AnyTLS)
+      - 🇺🇸11美国西集群-全网优化(AnyTLS)
+      - 🇭🇰2香港集群-全网优化(AnyTLS)
+      - 4台湾-联通优化(AnyTLS)
+rules:
+  - DOMAIN-KEYWORD,google,狗狗加速.com
+  - DOMAIN-KEYWORD,github,狗狗加速.com
+  - DOMAIN-KEYWORD,archlinux,狗狗加速.com
+  - MATCH,DIRECT
+socks-port: 7891
+port: 7892
+redir-port: 0
+tproxy-port: 0
+tcp-concurrent: false
+find-process-mode: strict
+bind-address: "*"
+lan-allowed-ips:
+  - 0.0.0.0/0
+  - ::/0
+lan-disallowed-ips: []
+authentication: []
+skip-auth-prefixes:
+  - 127.0.0.1/32
+  - ::1/128
+geo-auto-update: false
+geo-update-interval: 24
+geodata-mode: false
+geox-url:
+  geoip: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat
+  geosite: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
+  mmdb: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb
+  asn: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb
+

@@ -1,0 +1,7 @@
+{
+  "uuid": "gpu-monitor@example.com",
+  "name": "GPU Monitor",
+  "description": "Monitor GPU usage in real-time.",
+  "shell-version": ["40", "41", "47"],
+  "version": 1
+}

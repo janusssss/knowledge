@@ -1,0 +1,15 @@
+# 服务监听端口，一般使用 443
+#listen: :443
+listen: "[2a01:4f8:162:54d9:1c1::]:443"   # 只监听特定 IPv6 地址
+
+# TLS 证书配置（有证书和私钥才能工作）
+tls:
+  cert: /root/server.crt    # 证书文件路径
+  key: /root/server.key      # 私钥文件路径
+
+# 客户端认证方式（推荐用密码）
+auth:
+  type: password
+  password: 27149            # 请修改这个密码，Mihomo客户端要用
+
+

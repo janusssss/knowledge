@@ -1,0 +1,56 @@
+mode: rule
+log-level: info
+ipv6: true
+unified-delay: true
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+tun:
+  enable: true
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+  mtu: 1500
+
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - https://223.5.5.5/dns-query
+    - https://cloudflare-dns.com/dns-query
+  fallback-filter:
+    geoip: true
+    domain:
+      - +.google.com
+      - +.youtube.com
+      - +.github.com
+
+proxies:
+  - name: custome
+    type: hysteria2
+    server: "2a01:4f8:162:54d9:1c1::"
+    port: 443
+    password: "27149"
+    skip-cert-verify: true
+
+proxy-groups:
+  - name: Proxy
+    type: select
+    proxies:
+      - custome
+      - DIRECT
+
+# 代理规则
+rules:
+  - DOMAIN-KEYWORD,google,Proxy
+  - DOMAIN-KEYWORD,github,Proxy
+  - DOMAIN-KEYWORD,archlinux,Proxy
+  - MATCH,DIRECT
+  # 其余所有流量走代理
+  #- MATCH,DIRECT

@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus Server
+Documentation=https://prometheus.io/docs/introduction/overview/
+After=network.target
+
+[Service]
+User=prometheus
+Restart=on-failure
+WorkingDirectory=/usr/local/share/prometheus/
+ExecStart=/usr/local/share/prometheus/prometheus \
+          --config.file=/usr/local/share/prometheus/prometheus.yml
+
+[Install]
+WantedBy=multi-user.target

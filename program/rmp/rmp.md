@@ -1,0 +1,130 @@
+`rpm`命令，它是 Red Hat Package Manager 的缩写，用于在基于 RPM 的 Linux 系统（如 Red Hat, CentOS, Fedora等）上进行软件包的管理。使用 `rpm` 命令，您可以安装、升级、查询和删除软件包。
+
+```bash
+Usage: rpm [OPTION...]
+
+Query/Verify package selection options:
+  -a, --all                          query/verify all packages
+  -f, --file                         query/verify package(s) owning file
+  -g, --group                        query/verify package(s) in group
+  -p, --package                      query/verify a package file
+      --pkgid                        query/verify package(s) with package identifier
+      --hdrid                        query/verify package(s) with header identifier
+      --triggeredby                  query the package(s) triggered by the package
+      --whatconflicts                query/verify the package(s) which require a dependency
+      --whatrequires                 query/verify the package(s) which require a dependency
+      --whatobsoletes                query/verify the package(s) which obsolete a dependency
+      --whatprovides                 query/verify the package(s) which provide a dependency
+      --whatrecommends               query/verify the package(s) which recommends a dependency
+      --whatsuggests                 query/verify the package(s) which suggests a dependency
+      --whatsupplements              query/verify the package(s) which supplements a dependency
+      --whatenhances                 query/verify the package(s) which enhances a dependency
+      --nomanifest                   do not process non-package files as manifests
+
+Query/Verify file selection options:
+  -c, --configfiles                  only include configuration files
+  -d, --docfiles                     only include documentation files
+  -L, --licensefiles                 only include license files
+  -A, --artifactfiles                only include artifact files
+      --noghost                      exclude %%ghost files
+      --noconfig                     exclude %%config files
+      --noartifact                   exclude %%artifact files
+
+Query options (with -q or --query):
+      --dump                         dump basic file information
+  -l, --list                         list files in package
+      --queryformat=QUERYFORMAT      use the following query format
+  -s, --state                        display the states of the listed files
+
+Verify options (with -V or --verify):
+      --nofiledigest                 don't verify digest of files
+      --nofiles                      don't verify files in package
+      --nodeps                       don't verify package dependencies
+      --noscript                     don't execute verify script(s)
+
+Install/Upgrade/Erase options:
+      --allfiles                     install all files, even configurations which might otherwise be skipped
+      --allmatches                   remove all packages which match <package> (normally an error is generated if <package> specified multiple packages)
+      --badreloc                     relocate files in non-relocatable package
+  -e, --erase=<package>+             erase (uninstall) package
+      --excludedocs                  do not install documentation
+      --excludepath=<path>           skip files with leading component <path> 
+     ` --force`                        short hand for --replacepkgs --replacefiles
+  -F, --freshen=<packagefile>+       upgrade package(s) if already installed
+  -h, --hash                         print hash marks as package installs (good with -v)
+      --ignorearch                   don't verify package architecture
+      --ignoreos                     don't verify package operating system
+      --ignoresize                   don't check disk space before installing
+      --noverify                     short hand for --ignorepayload --ignoresignature
+  -i, --install                      install package(s)
+      --justdb                       update the database, but do not modify the filesystem
+      `--nodeps`                       do not verify package dependencies
+      --nofiledigest                 don't verify digest of files
+      --nocontexts                   don't install file security contexts
+      --nocaps                       don't install file capabilities
+      --noorder                      do not reorder package installation to satisfy dependencies
+      --noscripts                    do not execute package scriptlet(s)
+      --notriggers                   do not execute any scriptlet(s) triggered by this package
+      --oldpackage                   upgrade to an old version of the package (--force on upgrades does this automatically)
+      --percent                      print percentages as package installs
+      --prefix=<dir>                 relocate the package to <dir>, if relocatable
+      --relocate=<old>=<new>         relocate files from path <old> to <new>
+      --replacefiles                 ignore file conflicts between packages
+      --replacepkgs                  reinstall if the package is already present
+      --test                         don't install, but tell if it would work or not
+  -U, --upgrade=<packagefile>+       upgrade package(s)
+      --reinstall=<packagefile>+     reinstall package(s)
+
+Common options for all rpm modes and executables:
+  -D, --define='MACRO EXPR'          define MACRO with value EXPR
+      --undefine=MACRO               undefine MACRO
+  -E, --eval='EXPR'                  print macro expansion of EXPR
+      --target=CPU-VENDOR-OS         Specify target platform
+      --macros=<FILE:...>            read <FILE:...> instead of default file(s)
+      --load=<FILE>                  load a single macro file
+      --noplugins                    don't enable any plugins
+      --nodigest                     don't verify package digest(s)
+      --nosignature                  don't verify package signature(s)
+      --rcfile=<FILE:...>            read <FILE:...> instead of default file(s)
+  -r, --root=ROOT                    use ROOT as top level directory (default: "/")
+      --dbpath=DIRECTORY             use database in DIRECTORY
+      --querytags                    display known query tags
+      --showrc                       display final rpmrc and macro configuration
+      --quiet                        provide less detailed output
+  -v, `--verbose `                     provide more detailed output
+      --version                      print the version of rpm being used
+
+Options implemented via popt alias/exec:
+      --scripts                      list install/erase scriptlets from package(s)
+      --setperms                     set permissions of files in a package
+      --setugids                     set user/group ownership of files in a package
+      --setcaps                      set capabilities of files in a package
+      --restore                      restore file/directory permissions
+      --conflicts                    list capabilities this package conflicts with
+      --obsoletes                    list other packages removed by installing this package
+      --provides                     list capabilities that this package provides
+      --requires                     list capabilities required by package(s)
+      --recommends                   list capabilities recommended by package(s)
+      --suggests                     list capabilities suggested by package(s)
+      --supplements                  list capabilities supplemented by package(s)
+      --enhances                     list capabilities enhanced by package(s)
+      --info                         list descriptive information from package(s)
+      --changelog                    list change logs for this package
+      --changes                      list changes for this package with full time stamps
+      --xml                          list metadata in xml
+      --triggers                     list trigger scriptlets from package(s)
+      --filetriggers                 list filetrigger scriptlets from package(s)
+      --last                         list package(s) by install time, most recent first
+      --dupes                        list duplicated packages
+      --filesbypkg                   list all files from each package
+      --fileclass                    list file names with their classes
+      --filecolor                    list file names with their colors
+      --fileprovide                  list file names with their provides
+      --filerequire                  list file names with requires
+      --filecaps                     list file names with their POSIX1.e capabilities
+
+Help options:
+  -?, --help                         Show this help message
+      --usage                        Display brief usage message
+```
+
