@@ -1,0 +1,334 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+cv:
+  name: 吴恩强
+  headline: 
+  location: 北京
+  email: janussss@163.com
+  photo:
+  phone: "+8619271105174"
+  website: 
+  social_networks:
+    - network: GitHub
+      username: https://github.com/janusssss
+  custom_connections:
+    - placeholder: 1998-01
+      url: null
+      fontawesome_icon: calendar-days
+  sections:
+    技术栈:
+      - 擅长Golang，熟悉并发编程，理解GC调度，有pprof性能调优实战经验
+      - 熟悉Echo、Gin等框架，有高并发RESTful服务开发经验，具备基于epoll的事件驱动网络模型开发经验
+      - 熟悉PostgreSQL、MySQL等关系型数据库，掌握索引应用与SQL调优，有通过慢查询分析优化接口性能的实战经验
+      - 了解MongoDB、Etcd等组件，理解文档存储与分布式配置机制，在业务中使用二者完成异构数据存储
+      - 熟悉Linux环境，有线上服务CPU/内存飙高、连接泄漏等性能问题排查经验，常结合tcpdump、ss等工具定位根因
+      - 了解Linux网络虚拟化，有ip netns、iptables使用经验，可独立构建网络拓扑进行连通性测试与故障模拟
+      - 熟悉Docker与Kubernetes，掌握容器化应用的镜像构建与服务编排，有K8s集群下的部署、配置管理经验
+      - 了解Kafka、RabbitMQ等消息队列，熟悉常见消息可靠性配置，如ACK机制、持久化、重试策略
+      - 有Java及大数据开发经验，熟悉Spring Boot框架，了解Spark、Hive、ClickHouse等生态组件
+      - 了解Shell、Python，有脚本编写经验，熟练使用grep、awk、perl、vim进行日志分析与文本处理
+    工作经历:
+      - company: 厦门方胜众合企业服务有限公司北京分公司
+        position: Golang开发
+        date:
+        start_date: 2025-12
+        end_date: 2026-09
+        location: 北京
+        summary: 驻场兴唐通信科技有限公司
+        highlights:
+          - 优化数据转发功能，基于syscall封装epoll事件驱动模型处理TCP连接，吞吐量从300Mbps提升至900Mbps
+          - 基于业务场景实现报文封装与解析工具，将小于16字节的数据填充至16字节，满足下游系统加密长度要求
+      - company: 万联云启科技(南京)有限公司北京分公司
+        position: Golang/Java开发
+        date:
+        start_date: 2023-05
+        end_date: 2025-11
+        location: 北京
+        summary: 驻场亚信科技（中国）有限公司
+        highlights:
+          - 负责功能模块的设计与编码实现
+          - 分析并解决运行时出现的各类技术问题，保障服务稳定性
+          - 参与CI/CD流水线建设，配合运维团队完成服务部署和版本升级
+      - company: 广州芦荟信息科技有限公司
+        position: Java开发
+        date:
+        start_date: 2021-05
+        end_date: 2023-04
+        location: 广州
+        summary:
+        highlights:
+          - 使用 Java 语言编写高质量的代码，实现指定的功能模块
+          - 在版本控制系统上进行代码管理，与团队成员有效沟通，共同推动项目进度      
+    项目经历:
+      - name: 数据中转程序
+        date:
+        start_date: 
+        end_date: 
+        location: 北京
+        summary: 基于TCP与AF_PACKET协议转换的数据中转程序，支持从TCP接收数据经AF_PACKET转发，同时支持从AF_PACKET接收数据经TCP转发，实现双向传输
+        highlights:
+          - 重构原有C程序链路为Go单服务，解决多协议转换场景下的性能瓶颈与运维复杂度问题，千兆场景下吞吐量从300Mbps提升至900Mbps
+          - 将原有TCP→KCP→AF_PACKET→KCP→TCP多程序流转链路，优化为单Go服务直连，减少协议转换次数与跨程序调用开销
+          - 重构报文头，其长度与标准TCP/IP以太网帧头对齐，避免AF_PACKET收发时的额外数据填充，降低传输延迟
+          - 使用pprof定位性能瓶颈，发现高频内存分配是主要痛点，引入sync.Pool复用对象池，降低GC开销，提升吞吐稳定性
+          - 设计基于原子计数与信号量的日志采样机制，减少高频日志打印带来的I/O开销，兼顾性能与排障能力
+      - name: 数据安全检查程序
+        date:
+        start_date: 
+        end_date: 
+        location: 北京
+        summary: 基于路由模式的数据处理节点，支持服务中心策略下发与热加载，对数据进行协议转换与长度重组，并根据策略结果动态路由至下一节点
+        highlights:
+          - 实现数据块填充及多层协议头长度字段递归更新机制，保障填充后数据包各层长度一致性，满足下游加密长度要求
+          - 优化策略加载功能实现，从单次数据包加载改为连接级复用，减少重复加载开销，提升数据处理效率
+          - 设计基于文件偏移量的增量日志定时上报功能，通过记录已上报位置实现增量上传，确保上传日志不重复、不丢失
+
+      - name: PicoClaw二次开发（树莓派远程开机）
+        summary: 基于开源AI助手PicoClaw，增加远程电源管理功能，实现在微信上通过指令让树莓派唤醒台式机
+        highlights:
+          - 在PicoClaw的命令解析与消息路由模块中新增自定义命令
+          - 通过树莓派GPIO引脚模拟台式机开机键信号，实现远程唤醒功能
+          - 复用PicoClaw的auth与gateway模块，打通聊天指令到GPIO控制的完整链路
+      - name: goStack
+        date:
+        start_date: 
+        end_date:
+        location:
+        summary: goStack是基于OpenStack生态使用golang构建的新一代计算服务引擎，旨在作为传统Nova组件的现代化替代方案，为云环境提供更先进、更高效的虚拟机实例全生命周期管理能力。该服务深度融合云原生理念，采用微服务架构设计，通过容器化部署和声明式API接口，显著提升了系统的可扩展性、稳定性和运维效率。
+        highlights:
+          - 参与处理现网资源池vCPU出现ST过高问题，主要处理CM型主机
+          - 分析并解决生产环境中的冷热迁移失败问题，修复相关bug
+          - gs命令行工具功能维护和迭代
+          - 编写详细技术文档，制定标准化运维操作流程(SOP) 
+      - name: openStack nova二次开发
+        date: 
+        start_date:
+        end_date:
+        location:
+        summary: 基于OpenStack Nova深度定制，扩展企业级特性，支持虚拟机、裸金属、容器统一管理及跨物理机无缝迁移 
+        highlights:
+          - 实例快照、备份恢复等功能维护和迭代
+          - 解决生产环境中的迁移失败、数据不一致等问题
+          - 编写技术文档、操作测试、运维sop。
+      - name: 数据中台分发系统
+        date: 
+        start_date:
+        end_date:
+        location:
+        summary: 构建企业级数据中台核心组件，作为承上启下的数据枢纽平台。系统负责接收来自统一调度系统和运营监控系统的海量接口数据，经过清洗、转换、路由后，智能分发至下游各业务系统，实现数据的高效流转和价值挖掘。        
+        highlights:
+          - 统一接入上游调度系统和监控系统的多源异构数据
+          - 实时/批量数据清洗、格式转换、质量校验
+          - 基于业务规则和数据特征，精准分发至目标系统
+          - 并发编程优化HiveServer2请求处理，将同步时间从2小时+缩短至10分钟
+      - name: 运营监控
+        date: 
+        start_date:
+        end_date:
+        location:
+        summary: 基于运营监控工具，实现Yarn集群与Spark任务的监控、告警及数据汇聚
+        highlights:
+          - 负责接口上传下发、场景列表、监控告警、接口考核功能实现与维护
+      - name: 南方电网监控
+        date: 
+        start_date:
+        end_date:
+        location:
+        summary: 南方电网智能监控平台，实现电网实时监测、故障预警与智能调度
+        highlights:
+    教育背景: 
+      - institution: 广东白云学院
+        area: 广东
+        degree: 本科
+        date:
+        start_date: 2016-09
+        end_date: 2020-06
+        location: 
+        summary:
+        highlights:
+
+design:
+  theme: classic
+  # page:
+  #   size: us-letter
+  #   top_margin: 0.7in
+  #   bottom_margin: 0.7in
+  #   left_margin: 0.7in
+  #   right_margin: 0.7in
+  #   show_footer: true
+  #   show_top_note: true
+  # colors:
+  #   body: rgb(0, 0, 0)
+  #   name: rgb(0, 79, 144)
+  #   headline: rgb(0, 79, 144)
+  #   connections: rgb(0, 79, 144)
+  #   section_titles: rgb(0, 79, 144)
+  #   links: rgb(0, 79, 144)
+  #   footer: rgb(128, 128, 128)
+  #   top_note: rgb(128, 128, 128)
+  # typography:
+  #   line_spacing: 0.6em
+  #   alignment: justified
+  #   date_and_location_column_alignment: right
+  #   font_family:
+  #     body: Source Sans 3
+  #     name: Source Sans 3
+  #     headline: Source Sans 3
+  #     connections: Source Sans 3
+  #     section_titles: Source Sans 3
+  #   font_size:
+  #     body: 10pt
+  #     name: 30pt
+  #     headline: 10pt
+  #     connections: 10pt
+  #     section_titles: 1.4em
+  #   small_caps:
+  #     name: false
+  #     headline: false
+  #     connections: false
+  #     section_titles: false
+  #   bold:
+  #     name: true
+  #     headline: false
+  #     connections: false
+  #     section_titles: true
+  # links:
+  #   underline: false
+  #   show_external_link_icon: false
+  # header:
+  #   alignment: center
+  #   photo_width: 3.5cm
+  #   photo_position: left
+  #   photo_space_left: 0.4cm
+  #   photo_space_right: 0.4cm
+  #   space_below_name: 0.7cm
+  #   space_below_headline: 0.7cm
+  #   space_below_connections: 0.7cm
+  #   connections:
+  #     phone_number_format: national
+  #     hyperlink: true
+  #     show_icons: true
+  #     display_urls_instead_of_usernames: false
+  #     separator: ''
+  #     space_between_connections: 0.5cm
+  # section_titles:
+  #   type: with_partial_line
+  #   line_thickness: 0.5pt
+  #   space_above: 0.5cm
+  #   space_below: 0.3cm
+  # sections:
+  #   allow_page_break: true
+  #   space_between_regular_entries: 1.2em
+  #   space_between_text_based_entries: 0.3em
+  #   show_time_spans_in:
+  #     - experience
+  # entries:
+  #   date_and_location_width: 4.15cm
+  #   side_space: 0.2cm
+  #   space_between_columns: 0.1cm
+  #   allow_page_break: false
+  #   short_second_row: true
+  #   degree_width: 1cm
+  #   summary:
+  #     space_above: 0cm
+  #     space_left: 0cm
+  #   highlights:
+  #     bullet: •
+  #     nested_bullet: •
+  #     space_left: 0.15cm
+  #     space_above: 0cm
+  #     space_between_items: 0cm
+  #     space_between_bullet_and_text: 0.5em
+  templates:
+  #   footer: '*NAME -- PAGE_NUMBER/TOTAL_PAGES*'
+  #   top_note: '*LAST_UPDATED CURRENT_DATE*'
+    single_date: YEAR年MONTH_ABBREVIATION
+  #   date_range: START_DATE – END_DATE
+  #   time_span: HOW_MANY_YEARS YEARS HOW_MANY_MONTHS MONTHS
+  #   one_line_entry:
+  #     main_column: '**LABEL:** DETAILS'
+  #   education_entry:
+  #     main_column: |-
+  #       **INSTITUTION**, AREA
+  #       SUMMARY
+  #       HIGHLIGHTS
+  #     degree_column: '**DEGREE**'
+  #     date_and_location_column: |-
+  #       LOCATION
+  #       DATE
+  #   normal_entry:
+  #     main_column: |-
+  #       **NAME**
+  #       SUMMARY
+  #       HIGHLIGHTS
+  #     date_and_location_column: |-
+  #       LOCATION
+  #       DATE
+    experience_entry:
+      main_column: |-
+        **COMPANY** POSITION
+        SUMMARY
+        HIGHLIGHTS
+ #     date_and_location_column: |-
+ #       LOCATION
+ #       DATE
+  #   publication_entry:
+  #     main_column: |-
+  #       **TITLE**
+  #       SUMMARY
+  #       AUTHORS
+  #       URL (JOURNAL)
+  #     date_and_location_column: DATE
+locale:
+  language: mandarin_chinese
+  # last_updated: Last updated in
+  # month: month
+  # months: months
+  # year: year
+  # years: years
+  # present: present
+  # phrases:
+  #   degree_with_area: DEGREE in AREA
+  # month_abbreviations:
+  #   - Jan
+  #   - Feb
+  #   - Mar
+  #   - Apr
+  #   - May
+  #   - June
+  #   - July
+  #   - Aug
+  #   - Sept
+  #   - Oct
+  #   - Nov
+  #   - Dec
+  # month_names:
+  #   - January
+  #   - February
+  #   - March
+  #   - April
+  #   - May
+  #   - June
+  #   - July
+  #   - August
+  #   - September
+  #   - October
+  #   - November
+  #   - December
+settings:
+  current_date: today
+  render_command:
+    output_folder: rendercv_output
+    design:
+    locale:
+    typst_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.typ
+    pdf_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.pdf
+    markdown_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.md
+    html_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.html
+    png_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.png
+    dont_generate_markdown: false
+    dont_generate_html: false
+    dont_generate_typst: false
+    dont_generate_pdf: false
+    dont_generate_png: false
+  bold_keywords: []
+  pdf_title: NAME - CV
