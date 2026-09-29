@@ -24,11 +24,10 @@ go.work.sum
 
 # env file
 .env
-*/rendercv_output/
 **/target/
 account.md
 dairy/
 **/.idea/
 hledger.journal
-resume*
+/resume/rendercv_output/
 
